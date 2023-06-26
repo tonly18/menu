@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+var menuList = [
+    {"id": 1, "pid": 0, "name": "电子"},
+    {"id": 2, "pid": 0, "name": "家电"},
+    {"id": 3, "pid": 0, "name": "水果"},
+    {"id": 4, "pid": 0, "name": "建材"},
+    {"id": 5, "pid": 1, "name": "手机"},
+    {"id": 6, "pid": 1, "name": "电脑"},
+    {"id": 7, "pid": 5, "name": "Apple"},
+    {"id": 8, "pid": 5, "name": "HUAWEI"},
+    {"id": 9, "pid": 8, "name": "P50"},
+]
+
+
+const data = [
+    {
+        "id": 5,
+        "name": "广东省",
+        "pid": 0,
+    },
+    {
+        "id":  6,
+        "name":"广州市",
+        "pid": 5,
+    },
+    {
+        "id": 7,
+        "name": "深圳市",
+        "pid": 5,
+    },
+    {
+        "id": 4,
+        "name": "北京市",
+        "pid": 3,
+    },
+    {
+        "id": 3,
+        "name": "北京",
+        "pid": 0,
+    },
+    {
+        "id": 2,
+        "name": "测试子地区",
+        "pid": 1,
+    },
+    {
+        "aid": 1,
+        "name": "测试地区",
+        "pid": 0,
+    }
+]
+
+// function toTreeData(data, pid){
+//     function tree(id) {
+//         let arr = []
+//
+//         data.filter(item => {
+//             return item.pid === id;
+//         }).forEach(item => {
+//             arr.push({
+//                 id: item.id,
+//                 pid: item.pid,
+//                 name: item.name,
+//                 children: tree(item.id)
+//             })
+//         })
+//         return arr
+//     }
+//
+//     return tree(pid)  // 第一级节点的父id，是null或者0，视情况传入
+// }
+
+
+function toTreeData(data, id){
+    let arr = []
+    data.forEach(item => {
+        if (item.pid === id) {
+            arr.push({
+                id: item.id,
+                pid: item.pid,
+                name: item.name,
+                children: toTreeData(data, item.id)
+            })
+        }
+    })
+
+    return arr
+}
+
+mem = toTreeData(menuList, 0)
+console.log(mem)
+</script>
+</body>
+</html>
