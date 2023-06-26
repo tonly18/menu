@@ -66,14 +66,11 @@ func showMenu(id int, menu []*menuTree, sep string) {
 }
 
 func main() {
-	//递归
-	n := fact(5)
-	fmt.Println("fact(5)::::::::", n, "\n")
-
 	//菜单
 	menuId := 0
 	mlist := GenMenu(menuId, menus)
 	showMenu(menuId, mlist, separator)
+	
 	//for _, v := range mlist {
 	//	fmt.Println("|--", v.Id, v.Pid, v.Name)
 	//	for _, val := range v.Child {
@@ -88,13 +85,3 @@ func main() {
 	//}
 
 }
-
-func fact(n int) int {
-	if n <= 1 {
-		return 1
-	}
-	return n * fact(n-1)
-}
-
-//10: 10 + fact(10-1)
-// 9: 10 + 9 + fact(9-1)
