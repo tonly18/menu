@@ -1,4 +1,7 @@
 # menu
+
+go get -u github.com/tonly18/menu
+
 ### golang实现无级分类
 
 <br>
